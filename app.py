@@ -16,35 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Force Hide Fork, GitHub Icon, Header, and Streamlit Footer
-st.markdown("""
-    <style>
-    /* Streamlit top header completely hide karein */
-    header[data-testid="stHeader"] {
-        display: none !important;
-    }
-    
-    /* Top Right Menu Actions (Fork, GitHub, Options) */
-    [data-testid="stHeaderActionElements"], 
-    .stAppHeader, 
-    #MainMenu, 
-    footer {
-        display: none !important;
-        visibility: hidden !important;
-    }
-
-    /* Sidebar toggle button ko visible aur accessible rakhein */
-    [data-testid="stSidebarCollapseButton"] {
-        position: fixed !important;
-        top: 10px !important;
-        left: 10px !important;
-        z-index: 999999 !important;
-        display: block !important;
-        visibility: visible !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
+   
 def extract_text_from_file(uploaded_file):
     ext = os.path.splitext(uploaded_file.name)[1].lower()
     text_chunks = []
