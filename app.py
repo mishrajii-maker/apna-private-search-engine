@@ -15,6 +15,15 @@ st.set_page_config(
     page_icon="⚡", 
     layout="wide"
 )
+# Force Hide Streamlit Top Right Toolbar, Fork Menu, and Footer
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stAppHeader {display: none;}
+    </style>
+""", unsafe_allow_html=True)
 
 def extract_text_from_file(uploaded_file):
     ext = os.path.splitext(uploaded_file.name)[1].lower()
