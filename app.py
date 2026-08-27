@@ -15,24 +15,32 @@ st.set_page_config(
     page_icon="⚡", 
     layout="wide"
 )
-# Hide Top Right Actions (Fork, GitHub, Options) but keep Sidebar Toggle Visible
+
+# Force Hide Fork, GitHub Icon, Header, and Streamlit Footer
 st.markdown("""
     <style>
-    /* Top Right Menu & Fork options hide karne ke liye */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    [data-testid="stAppHeader"] {
-        background-color: transparent !important;
-    }
-    /* Top Right Side Actions (Fork, GitHub icon) ko Hide karein */
-    [data-testid="stHeaderActionElements"] {
+    /* Streamlit top header completely hide karein */
+    header[data-testid="stHeader"] {
         display: none !important;
     }
-    /* Sidebar Toggle Arrow Icon ko hamesha Visible rakhein */
+    
+    /* Top Right Menu Actions (Fork, GitHub, Options) */
+    [data-testid="stHeaderActionElements"], 
+    .stAppHeader, 
+    #MainMenu, 
+    footer {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Sidebar toggle button ko visible aur accessible rakhein */
     [data-testid="stSidebarCollapseButton"] {
+        position: fixed !important;
+        top: 10px !important;
+        left: 10px !important;
+        z-index: 999999 !important;
         display: block !important;
         visibility: visible !important;
-        z-index: 99999;
     }
     </style>
 """, unsafe_allow_html=True)
